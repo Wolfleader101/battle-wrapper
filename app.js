@@ -22,5 +22,18 @@ module.exports = {
                 return servers;
             })
     },
-
+    GetServerInfoById: (serverId) => {
+        return axios.get(`/servers/${serverId}`)
+        .then(res => {
+                attr = res.data.data.attributes;
+                let info = {
+                    Id: attr.id,
+                    Name: attr.name,
+                    Population: attr.players + "/" + attr.maxPlayers,
+                    Rank: attr.rank,
+                    Description: attr.details.rust_description
+                }
+            return info;
+        })
+    }
 }
