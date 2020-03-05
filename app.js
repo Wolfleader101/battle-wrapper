@@ -24,8 +24,7 @@ module.exports = {
                     if (err) throw err;
                     console.log("Retrieved Server info!")
                 })
-                return servers;
             })
-    }
+    },
 
 }
