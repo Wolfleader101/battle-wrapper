@@ -1,6 +1,6 @@
 {
   "name": "battle-wrapper",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A basic wrapper for the battlemetrics API",
   "main": "app.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "axios": "^0.19.2"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/Wolfleader101/battle-wrapper.git"
+    "type": "git",
+    "url": "https://github.com/Wolfleader101/battle-wrapper.git"
   }
 }
