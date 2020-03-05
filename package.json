@@ -1,6 +1,6 @@
 {
   "name": "battle-wrapper",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A basic wrapper for the battlemetrics API",
   "main": "app.js",
   "scripts": {
