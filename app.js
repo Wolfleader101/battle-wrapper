@@ -35,5 +35,20 @@ module.exports = {
                 }
             return info;
         })
+    },
+    GetServerId: (serverName, gameType, serverStatus="online") => {
+        return axios.get(`/servers?filter[search]='${serverName}&filter[game]=${gameType}&filter[status]=${serverStatus}`)
+        .then(res => {
+            let servers = [];
+            res.data.data.forEach(el => {
+                attr = el.attributes;
+                let info = {
+                    Id: attr.id,
+                    Name: attr.name,
+                }
+                servers.push(info);
+            });
+            return servers;
+        })
     }
 }
