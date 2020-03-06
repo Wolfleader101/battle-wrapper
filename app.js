@@ -52,5 +52,15 @@ module.exports = {
             });
             return servers;
         })
-    }
+    },
+    GetServerPlayerCount: (serverId) => {
+        return axios.get(`/servers/${serverId}`)
+        .then(res => {
+                attr = res.data.data.attributes;
+                let info = {
+                    Population: attr.players + "/" + attr.maxPlayers,
+                }
+            return info;
+        })
+    },
 }
