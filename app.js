@@ -1,4 +1,6 @@
 const axios = require('axios');
+const moment = require('moment')
+const dateFormat = "DD-MM-YYYY";
 
 axios.defaults.baseURL = 'https://api.battlemetrics.com';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -61,6 +63,47 @@ module.exports = {
                     Population: attr.players + "/" + attr.maxPlayers,
                 }
             return info;
+        })
+    },
+    GetServerPlayerCountHistory: (serverId, PastDays = 90) => {
+
+        let end = moment().toJSON();
+        let start = moment().subtract(`${PastDays}`, 'days').toJSON();
+        return axios.get(`servers/${serverId}/player-count-history?start=${start}&stop=${end}`)
+        .then(res => {
+            let times = [];
+            res.data.data.forEach(el => { 
+                let attr = el.attributes;
+                let FormatTime = moment(attr.timestamp).format(dateFormat);
+                let info = {
+                    Time: FormatTime,
+                    MaxPlayers: attr.max,
+                    MinPlayers: attr.min
+                }
+                times.push(info)
+            })
+  
+            return times;
+        })
+    },
+    GetServerRankHistory: (serverId, PastDays = 90) => {
+
+        let end = moment().toJSON();
+        let start = moment().subtract(`${PastDays}`, 'days').toJSON();
+        return axios.get(`servers/${serverId}/rank-history?start=${start}&stop=${end}`)
+        .then(res => {
+            let times = [];
+            res.data.data.forEach(el => { 
+                let attr = el.attributes;
+                let FormatTime = moment(attr.timestamp).format(dateFormat);
+                let info = {
+                    Time: FormatTime,
+                    Rank: attr.value,
+                }
+                times.push(info)
+            })
+
+            return times;
         })
     },
 }
