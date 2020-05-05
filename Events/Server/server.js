@@ -4,8 +4,12 @@ const dateFormat = "DD-MM-YYYY";
 
 axios.defaults.baseURL = 'https://api.battlemetrics.com';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
-
 module.exports = {
+    /**
+     * @param {string} serverName - Server name
+     * @param {string} gameType - Name of game
+     * @param {string} serverStatus - (optional)Status of server
+     */
     GetServerInfoByName: (serverName, gameType, serverStatus = "online") => {
         return axios.get(`/servers?filter[search]='${serverName}&filter[game]=${gameType}&filter[status]=${serverStatus}`)
             .then(res => {
@@ -25,6 +29,9 @@ module.exports = {
                 return servers;
             })
     },
+    /**
+     * @param {number} serverId - ID of the server
+     */
     GetServerInfoById: (serverId) => {
         return axios.get(`/servers/${serverId}`)
             .then(res => {
@@ -40,6 +47,11 @@ module.exports = {
                 return info;
             })
     },
+    /**
+     * @param {string} serverName - Server name
+     * @param {string} gameType - Name of game
+     * @param {string} serverStatus - (optional)Status of server
+     */
     GetServerId: (serverName, gameType, serverStatus = "online") => {
         return axios.get(`/servers?filter[search]='${serverName}&filter[game]=${gameType}&filter[status]=${serverStatus}`)
             .then(res => {
@@ -55,6 +67,9 @@ module.exports = {
                 return servers;
             })
     },
+    /**
+     * @param {number} serverId - ID of the server
+     */
     GetServerPlayerCount: (serverId) => {
         return axios.get(`/servers/${serverId}`)
             .then(res => {
@@ -65,6 +80,10 @@ module.exports = {
                 return info;
             })
     },
+    /**
+     * @param {number} serverId - ID of the server
+     * @param {number} PastDays - number of days for player count max of 90
+     */
     GetServerPlayerCountHistory: (serverId, PastDays = 90) => {
 
         let end = moment().toJSON();
@@ -86,6 +105,10 @@ module.exports = {
                 return times;
             })
     },
+    /**
+     * @param {number} serverId - ID of the server
+     * @param {number} PastDays - number of days for player count max of 90
+     */
     GetServerRankHistory: (serverId, PastDays = 90) => {
 
         let end = moment().toJSON();
@@ -106,6 +129,10 @@ module.exports = {
                 return times;
             })
     },
+    /**
+     * @param {number} serverId - ID of the server
+     * @param {number} PastDays - number of days for player count max of 90
+     */
     GetServerGroupRankHistory: (serverId, PastDays = 90) => {
 
         let end = moment().toJSON();
