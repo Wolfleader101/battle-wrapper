@@ -9,6 +9,7 @@
   "author": "Wolfleader101",
   "license": "ISC",
   "dependencies": {
+    "moment": "^2.24.0",
     "axios": "^0.19.2"
   },
   "repository": {
@@ -16,6 +17,7 @@
     "url": "https://github.com/Wolfleader101/battle-wrapper.git"
   },
   "devDependencies": {
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "axios": "^0.19.2"
   }
 }
