@@ -62,7 +62,7 @@ battleWrapper.Server.GetServerId("DankBank", "rust").then((result) => {
 
 This will return your array of servers matching that name
 
-```json
+```js
 [{
     Id: '4172964',
     Name: '[AU] DankBank Build | Creative | PVE | Sandbox'
